@@ -1,0 +1,85 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="auth-container row g-0 shadow-lg rounded-4 overflow-hidden">
+    <div class="col-lg-5 auth-left d-none d-lg-flex p-4 text-white">
+      <div>
+        <div class="feature-icon mb-3">
+          <i class="fas fa-robot fa-2x"></i>
+        </div>
+        <h2>Welcome to </h2>
+        <p>Your intelligent companion powered by advanced AI. Experience seamless conversations and get things done faster.</p>
+        <div class="mt-5">
+          <div class="mb-3">
+            <i class="fas fa-check-circle me-2"></i> Smart AI responses
+          </div>
+          <div class="mb-3">
+            <i class="fas fa-check-circle me-2"></i> Secure authentication
+          </div>
+          <div>
+            <i class="fas fa-check-circle me-2"></i> Personalized experience
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="col-lg-7 auth-right p-5 bg-white">
+      <div id="signupForm">
+        <h3 class="mb-4 fw-bold">Create Account</h3>
+        <div class="divider text-center my-3">
+          <span>sign up with email</span>
+        </div>
+
+        <form #signupForm="ngForm" (ngSubmit)="!signupForm.invalid && onSignup()">
+          <div class="mb-3">
+            <label for="signupName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="signupName" name="fullname" minlength="3" [(ngModel)]="user.name" #Fullname="ngModel" placeholder="Enter your name" required>
+            <span *ngIf="Fullname.invalid && signupForm.submitted">
+              <small class="text-danger" *ngIf="Fullname.errors?.['required']">Name is required.</small>
+              <small class="text-danger" *ngIf="Fullname.errors?.['minlength']">Name must be at least 3 characters long.</small>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="signupEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="signupEmail" name="email"  [(ngModel)]="user.email" #emailId="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="Enter your email" required>
+            <span *ngIf="emailId.invalid && signupForm.submitted">
+              <small class="text-danger" *ngIf="emailId.errors?.['required']">Email is required.</small>
+              <!-- <small class="text-danger" *ngIf="emailId.errors?.['email']">Please enter a valid email address.</small> -->
+              <small class="text-danger" *ngIf="emailId.errors?.['pattern']">Please enter a valid email address.</small>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="signupPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="signupPassword" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"  [(ngModel)]="user.password" #Password="ngModel" placeholder="Create a password" required>
+            <span *ngIf="Password.invalid && signupForm.submitted">
+              <small class="text-danger" *ngIf="Password.errors?.['required']">Password is required.</small>
+              <small class="text-danger" *ngIf="Password.errors?.['pattern']">Password must be at least 8 characters long and include uppercase, lowercase letters, and a number.</small>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmpassword" [(ngModel)]="cPassword" #confirmPassword="ngModel" placeholder="Confirm your password" required>
+            <span *ngIf="confirmPassword.invalid && signupForm.submitted">
+              <small class="text-danger" *ngIf="confirmPassword.errors?.['required']">Confirm Password is required.</small>
+            </span>
+            <span *ngIf="cPassword && cPassword !== user.password && signupForm.submitted">
+              <small class="text-danger">Passwords do not match.</small>
+            </span>
+          </div>
+          <!-- <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+            <label class="form-check-label" for="agreeTerms">
+              <small>I agree to the Terms of Service and Privacy Policy</small>
+            </label>
+          </div> -->
+          <button type="submit" class="btn btn-primary w-100 mb-3">Create Account</button>
+        </form>
+
+        <div class="text-center">
+          <small>Already have an account?
+            <a href="#" class="toggle-form" routerLink="/login">Sign in</a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
