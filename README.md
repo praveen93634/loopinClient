@@ -1,59 +1,51 @@
-# LoopinClient
+# 🌀 Loopin Client
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+**Loopin** is a next-gen **social media chatting platform** where users can **connect, chat in real-time**, and even talk to an **AI assistant (like Meta AI in WhatsApp)** — all in one app.  
+This repository contains the **frontend** built using **Angular**, **Tailwind CSS**, and **Bootstrap** for a responsive and modern user interface.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🎯 Features
 
+### 👥 Social Features
+- User registration and login (Firebase/Google Auth)
+- Send, receive, and manage connection requests
+- View user profiles and connection lists
+
+### 💬 Real-Time Chat
+- One-to-one live chat with instant message delivery
+- Online/offline status indicators
+- Message read receipts and timestamps
+- Typing indicators (Socket-based)
+
+### 🤖 AI Chat Integration
+- Dedicated AI chatbot integrated into the chat interface
+- Uses backend AI API (OpenAI/Gemini) to generate smart responses
+- Natural language interactions — just like Meta AI on WhatsApp
+
+### 🎨 Beautiful & Responsive UI
+- Built with **Angular + Tailwind CSS + Bootstrap**
+- Clean and modern chat interface
+- Light/Dark mode support (coming soon)
+
+---
+
+## 🧠 Tech Stack
+
+| Layer | Technology |
+|-------|-------------|
+| **Frontend Framework** | Angular (v20) |
+| **Styling** | Tailwind CSS + Bootstrap |
+| **State Management** | RxJS & Signals |
+| **Real-time Communication** | Socket.IO client |
+| **AI Assistant Integration** | REST API (Node.js + OpenAI) |
+| **Authentication** | Firebase Authentication |
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
 ```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+git clone https://github.com/praveen93634/loopinClient.git
+cd loopinClient
