@@ -8,17 +8,19 @@ import { CommonModule } from '@angular/common';
 import { UserService } from './service/user-service';
 import { skip } from 'rxjs';
 import { RequestService } from './service/request-service';
+import { NgbPagination } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule],
+  imports: [CommonModule, NgbPagination],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
 export class Dashboard implements OnInit {
   usersList: any[] = []
-  currentPage = 1;
+  page = 1;
   limit = 10;
+  totalUsers=0;
   constructor(private storageservice: SecureStorageService, private userservice: UserService, private requestservice: RequestService) { }
   ngOnInit(): void {
     const user = this.storageservice.getItem('user');
@@ -43,14 +45,19 @@ export class Dashboard implements OnInit {
   }
   getAllUsers() {
     let data = {
-      limit: this.limit,
-      skip: (this.currentPage - 1) * this.limit
+     limit: this.limit,
+      page: (this.page - 1) * this.limit
     }
     this.userservice.getAllUsers(data).subscribe((res: any) => {
       console.log(res);
       this.usersList = res.result.users;
+      this.totalUsers=res.result.userCount;
     }, (err => {
       console.log(err);
     }))
+  }
+    onPageChange(pageNumber: number) {
+    this.page = pageNumber;
+    this.getAllUsers();
   }
 }

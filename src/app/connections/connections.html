@@ -4,27 +4,28 @@
     <div *ngFor="let user of usersList" class="card mb-3 shadow-sm rounded">
         <div class="card-body d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <img [src]="user.avatar || 'https://via.placeholder.com/50'" class="rounded-circle me-3" width="50"
+                <img [src]="user?.avatar ?? 'default.webp'" class="rounded-circle me-3" width="50"
                     height="50" />
+                    <!-- <img src="../shared/asset/images/blank-profile-picture-973460_1280.webp" class="rounded-circle me-3" width="10"> -->
                 <div>
                     <h6 class="mb-0">{{ user.name }}</h6>
-                    <small class="text-muted">@{{ user.email }}</small>
+                    <small class="text-muted">{{ user.email }}</small>
                     <p class="mb-0 text-secondary" style="font-size: 13px;">{{ user.bio || 'No bio yet' }}</p>
                 </div>
             </div>
             
 
            <div class="d-flex gap-2">
-             <button class="btn btn-outline-primary btn-sm" (click)="Accpet(user._id)">
-                <i class="bi bi-person-plus"></i> Accpet
+             <button class="btn btn-outline-primary btn-md" [routerLink]="['/chat']" [queryParams]="{_id:user._id}">
+                <i class="bi bi-person-plus"></i> Chat
             </button>
-            <button class="btn btn-outline-danger btn-sm" (click)="Reject(user._id)">
+            <!-- <button class="btn btn-outline-danger btn-sm" (click)="Reject(user._id)">
                 <i class="bi bi-person-plus"></i> Reject
-            </button>
+            </button> -->
            </div>
         </div>
     </div>
     <div class="d-flex align-items-center" *ngIf="usersList.length<=0">
-                <h5 class="text-muted">No Connection Request Found!</h5>
+                <h5 class="text-muted">No Connections Found!</h5>
             </div>
 </div>

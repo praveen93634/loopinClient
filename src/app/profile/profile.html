@@ -1,10 +1,10 @@
 <div class="card profile-card shadow-sm p-4">
     <div class="row align-items-center">
         <div class="col-md-3 text-center mb-3 mb-md-0">
-            <img [src]="user.Avatar" alt="Profile" class="profile-img">
+            <img [src]="user.Avatar ?? 'default.webp'" alt="Profile" class="profile-img">
         </div>
         <div class="col-md-9">
-            <div class="profile-name">{{user.name}} <span> <button class="icon-btn">
+            <div class="profile-name">{{user.name}} <span> <button class="icon-btn" (click)="editprofile(content)">
                 <i class="ri-pencil-line"></i>
             </button></span></div>
             <!-- <p class="text-muted mb-2">Profile last updated: Today</p> -->
@@ -25,3 +25,40 @@
         </div>
     </div>
 </div>
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form #editProfileForm="ngForm" (ngSubmit)="!editProfileForm.invalid && updateProfile()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="Name" [(ngModel)]="updateuser.name" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="updateuser.email" readonly placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+                <label for="bio" class="form-label">Bio</label>
+                <textarea class="form-control" id="bio" name="bio" [(ngModel)]="updateuser.bio" maxlength="50" placeholder="Enter your bio" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location" [(ngModel)]="updateuser.location" placeholder="Enter your location">
+            </div>
+            <div class="mb-3">
+                <label for="mobile" class="form-label">Mobile</label>
+                <input type="text" class="form-control" id="mobile" name="mobile" [(ngModel)]="updateuser.mobile" placeholder="Enter your mobile number">
+            </div>
+            
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">Cancel</button>
+		<button type="button" class="btn btn-outline-primary" (click)="updateProfile()">Update Profile</button>
+	</div>
+		</form>
+	</div>
+	
+</ng-template>

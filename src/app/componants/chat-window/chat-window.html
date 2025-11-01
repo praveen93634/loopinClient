@@ -1,47 +1,45 @@
-<div class="flex flex-col h-screen bg-gray-50">
-  <!-- Header -->
-  <div class="flex items-center justify-between bg-gray-200 p-3 border-b">
-    <div class="flex items-center gap-3">
-      <img [src]="selectedUser?.profilePic" class="w-10 h-10 rounded-full">
-      <h3 class="font-semibold">{{ selectedUser?.name }}</h3>
-    </div>
-    <div class="flex gap-3 text-gray-600">
-      <button>🔍</button>
-      <button>⋮</button>
-    </div>
-  </div>
-
-  <!-- Messages -->
-  <div class="flex-1 overflow-y-auto p-4 space-y-2 bg-chat-bg bg-cover">
-    <!-- <div
-      *ngFor="let msg of messages"
-      class="flex"
-      [ngClass]="{'justify-end': msg.senderId === currentUserId}"
-    >
-      <div
-        class="max-w-xs px-3 py-2 rounded-lg text-sm"
-        [ngClass]="{
-          'bg-green-100': msg.senderId === currentUserId,
-          'bg-white': msg.senderId !== currentUserId
-        }"
-      >
-        {{ msg.text }}
+<div class="chat-wrapper d-flex justify-content-center">
+  <div class="chat-box d-flex flex-column bg-light border rounded shadow-sm my-3">
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between p-3 bg-primary text-white rounded-top">
+      <div class="d-flex align-items-center">
+        <img src="default.webp" alt="User" class="rounded-circle me-2" width="40" height="40">
+        <div>
+          <h6 class="mb-0 fw-bold">{{fromuser.name ?? "User"}}</h6>
+          <small class="text-white-50">Online</small>
+        </div>
       </div>
-    </div> -->
-  </div>
+      <i class="bi bi-three-dots-vertical fs-5"></i>
+    </div>
 
-  <!-- Input -->
-  <div class="p-3 bg-gray-200 flex items-center gap-2">
-    <input
-      [(ngModel)]="newMessage"
-      placeholder="Type a message"
-      class="flex-1 px-3 py-2 rounded-full border focus:outline-none"
-    />
-    <button
-      (click)="sendMessage()"
-      class="bg-green-500 text-white px-4 py-2 rounded-full"
-    >
-      ➤
-    </button>
+    <!-- Chat Body -->
+    <div class="chat-body flex-grow-1 overflow-auto p-3" id="chatBody">
+      @for (item of messages; track $index) {
+        <div>
+          <!-- Incoming message -->
+          <div *ngIf="!item.isMine" class="d-flex">
+            <img src="default.webp" alt="User" class="rounded-circle me-2" width="35" height="35">
+            <div class="bg-white p-2 px-3 rounded-3 shadow-sm">
+              <p class="mb-1">{{item.text}}</p>
+              <small class="text-muted">10:00 AM</small>
+            </div>
+          </div>
+
+          <!-- Outgoing message -->
+          <div *ngIf="item.isMine" class="bg-primary text-white p-2 px-3 rounded-3 shadow-sm">
+            <p class="mb-1">{{item.text}}</p>
+            <small class="text-white-50">10:02 AM</small>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Chat Input -->
+    <div class="p-3 bg-white border-top d-flex align-items-center rounded-bottom">
+      <input type="text" class="form-control me-2 rounded-pill" [(ngModel)]="message" placeholder="Type a message..." />
+      <button class="btn btn-primary rounded-circle" (click)="sendMessage()">
+        <i class="ri-telegram-2-line fs-5"></i>
+      </button>
+    </div>
   </div>
 </div>

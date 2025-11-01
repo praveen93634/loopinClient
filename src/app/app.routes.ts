@@ -23,7 +23,12 @@ export const routes: Routes = [
       },
       {
         path: 'profile', loadComponent: () => import('./profile/profile').then(m => m.Profile), canActivate: [authGuard]
+      },{
+        path: 'requests', loadComponent: () => import('./requests/requests').then(m => m.Requests), canActivate: [authGuard]
       },
+      {
+        path:'chat',loadComponent:()=>import('./componants/chat-window/chat-window').then(x=>x.ChatWindow)
+      }
     ]
   },
   {

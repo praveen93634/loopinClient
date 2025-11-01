@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../dashboard/service/request-service';
 import { UserService } from '../dashboard/service/user-service';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-connections',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './connections.html',
   styleUrl: './connections.scss',
 })
@@ -13,34 +14,35 @@ export class Connections implements OnInit {
   usersList: any[] = []
   currentPage = 1;
   limit = 10;
-  constructor(private userservice: UserService, private requestservice: RequestService) { }
-
+  constructor(private userservice: UserService, private requestservice: RequestService,private roter:Router) { }
+  image='asset/images/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg';
   ngOnInit(): void {
-    this.getPendingRequests();
+    this.getAllMyConnections();
   }
-  getPendingRequests() {
-    this.userservice.getPendingRequests().subscribe((res: any) => {
+  getAllMyConnections() {
+    this.userservice.getmyconnections().subscribe((res: any) => {
       console.log(res);
-      this.usersList = res.result.requests;
+      this.usersList = res.result;
     }, (err => {
       console.log(err);
     }
     ))
   }
-   Accpet(id: string) {
-    this.requestservice.acceptConnectionRequest(id).subscribe((res: any) => {
-      console.log(res);
-      this.getPendingRequests();
-    }, (err => {
-      console.log(err);
-    })) 
-  }
-  Reject(id: string) {
-    this.requestservice.rejectConnectionRequest(id).subscribe((res: any) => {
-      console.log(res);
-      this.getPendingRequests();
-    }, (err => {
-      console.log(err);
-    }))
-  }
+  //  Accpet(id: string) {
+  //   this.requestservice.acceptConnectionRequest(id).subscribe((res: any) => {
+  //     console.log(res);
+  //     this.getPendingRequests();
+  //   }, (err => {
+  //     console.log(err);
+  //   })) 
+  // }
+  // Reject(id: string) {
+  //   this.requestservice.rejectConnectionRequest(id).subscribe((res: any) => {
+  //     console.log(res);
+  //     this.getPendingRequests();
+  //   }, (err => {
+  //     console.log(err);
+  //   }))
+  // }
+  
 }

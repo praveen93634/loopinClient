@@ -14,10 +14,13 @@ export class UserService {
   getPendingRequests(){
     return this.http.get((this.url+'/requests/received'));
   }
-  getUserById(id:string){
-    return this.http.get((`this.url+/getUser/${id}`));
+  getUserById(){
+    return this.http.get((`${this.url}/profile`));
   }
   updateUser(data:any){
-    return this.http.put((this.url+'/updateUser'),data);
+    return this.http.put((this.url+'/update'),data);
+  }
+  getmyconnections(){
+    return this.http.get((this.url+'/myconnections'));
   }
 }
