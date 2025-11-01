@@ -9,14 +9,13 @@
         <p>Your seamless communication hub that keeps conversations flowing. Connect with friends, family, and teams instantly, wherever you are.</p>
         <div class="mt-5">
           <div class="mb-3">
-            <i class="fas fa-check-circle me-2"></i> 
-✨ Instant messaging
+           <i class="ri-message-3-line"></i>Instant messaging
           </div>
           <div class="mb-3">
             <i class="fas fa-check-circle me-2"></i> 🔒 End-to-end encryption
           </div>
           <div>
-            <i class="fas fa-check-circle me-2"></i> 👥 Group conversations
+            <i class="ri-wireless-charging-line"></i> seamless Experience
           </div>
         </div>
       </div>
@@ -39,7 +38,7 @@
             <label for="phoneNumber">Email</label>
             <div class="phone-input-group my-3">
               <input type="text" id="emailId" placeholder="Enter your Email"
-                class="form-control" name="emailid" [ngClass]="{'is-invalid':email.invalid && phoneForm.submitted  }"  [(ngModel)]="login.email" #email="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$" required />
+                class="form-control" name="emailid" [ngClass]="{'is-invalid':email.invalid && phoneForm.submitted  }"  [(ngModel)]="login.email" #email="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required />
                <span *ngIf="email.invalid && phoneForm.submitted ">
               <small *ngIf="email?.errors?.['required']" class="text-danger">
                 Email is required
@@ -52,12 +51,16 @@
 
             <!-- Validation Messages -->
           </div>
-          <div class="form-group">
+          <div class="form-col-lg-6 mb-3">
             <label for="password">Password</label>
-            <div class="phone-input-group my-3">
-              <input type="text" id="password" placeholder="Enter your Password"
-                class="form-control" name="Password" [ngClass]="{'is-invalid':password.invalid && phoneForm.submitted  }"  [(ngModel)]="login.password" #password="ngModel" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/" required />
-                <span  *ngIf="password.invalid && phoneForm.submitted ">
+            <div class="position-relative my-3">
+              <input [type]="showPassword ? 'text' : 'password'" id="password" placeholder="Enter your Password"
+                class="form-control" name="Password" [ngClass]="{'is-invalid':password.invalid && phoneForm.submitted  }"  [(ngModel)]="login.password" #password="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" required />
+                    <i class="ri-eye-line  position-absolute top-50 end-0 translate-middle-y me-3 text-muted"
+                            [ngClass]="{ 'ri-eye-off-line': showPassword }" style="cursor: pointer"
+                            (click)="togglePassword()"></i>
+              </div>
+              <span  *ngIf="password.invalid && phoneForm.submitted ">
               <small *ngIf="password?.errors?.['required']" class="text-danger">
                 Password is required
               </small>
@@ -65,7 +68,6 @@
                  Enter a valid Password
               </small>
             </span>
-              </div>
 
             <!-- Validation Messages -->
             

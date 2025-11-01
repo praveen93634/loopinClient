@@ -9,6 +9,7 @@ import { Authentication } from '../model/auth.model';
 import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { NgZone } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { SecureStorageService } from '../../shared/service/secure-storage-service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ import { firstValueFrom } from 'rxjs';
 })
 export class Login implements OnInit {
   login: Authentication = new Authentication()
-  constructor(private authService: AuthenticationService, private auth: Auth, private router: Router, private fireAuth: FirebaseAuth) { }
+  showPassword?:Boolean
+  constructor(private authService: AuthenticationService, private auth: Auth, private router: Router, private fireAuth: FirebaseAuth,private storageservice:SecureStorageService) { }
 
   ngOnInit(): void {
 
@@ -32,6 +34,7 @@ export class Login implements OnInit {
           this.authService.sendId({ token: token }).subscribe((response: any) => {
             console.log(response);
             localStorage.setItem('token', response.result.token)
+            this.storageservice.setItem('user', response.result.user)
             this.router.navigate(['/home'])
           }, (err => {
             console.log(err);
@@ -50,10 +53,14 @@ export class Login implements OnInit {
   onsubmit() {
     this.authService.login(this.login).subscribe((res: any) => {
       console.log(res);
-      localStorage.setItem('token', res.token)
+      localStorage.setItem('token', res.result.token)
+      this.storageservice.setItem('user', res.result.user)
       this.router.navigate(['/home'])
     }, (err => {
       console.log(err);
     }))
   }
+   togglePassword(){
+      this.showPassword = !this.showPassword;
+   }
 }

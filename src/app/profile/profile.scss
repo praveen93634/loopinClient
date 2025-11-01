@@ -1,0 +1,39 @@
+.profile-card {
+  border-radius: 15px;
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: inherit; /* Keeps same color as text */
+}
+
+.icon-btn:hover {
+  color: #007bff; /* optional hover effect */
+}
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #555;
+}
+
+.icon-text i {
+  color: #007bff;
+}

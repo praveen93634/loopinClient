@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+  <div class="container-fluid px-4">
+    <!-- Loopin Logo -->
+    <h3>Loopin</h3>
+
+    <!-- Search Bar -->
+    <!-- <div class="search-container mx-3 flex-grow-1" style="max-width: 280px;">
+          <div class="input-group">
+            <span class="input-group-text bg-light border-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </span>
+            <input type="text" class="form-control bg-light border-0" placeholder="Search" aria-label="Search">
+          </div>
+        </div> -->
+
+    <!-- Navigation Items -->
+    <div class="navbar-nav ms-auto">
+      <ul class="navbar-nav flex-row gap-3">
+        <li class="nav-item text-center">
+          <a class="nav-link d-flex flex-column align-items-center" routerLink="/home"
+            [class.active]="activeItem === 'home'" (click)="setActive('home')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path
+                d="M19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20C20 20.5523 19.5523 21 19 21ZM6 19H18V9.15745L12 3.7029L6 9.15745V19Z">
+              </path>
+            </svg>
+            <small class="mt-1">Home</small>
+          </a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link d-flex flex-column align-items-center" routerLink="connections"
+            [class.active]="activeItem === 'network'" (click)="setActive('network')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+            </svg>
+            <small class="mt-1">My Connections</small>
+          </a>
+        </li>
+        <!-- <li class="nav-item text-center">
+              <a class="nav-link d-flex flex-column align-items-center" href="#" [class.active]="activeItem === 'jobs'" (click)="setActive('jobs')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                <small class="mt-1">Jobs</small>
+              </a>
+            </li> -->
+        <!-- <li class="nav-item text-center">
+              <a class="nav-link d-flex flex-column align-items-center" href="#" [class.active]="activeItem === 'messaging'" (click)="setActive('messaging')">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M5.76282 17H20V5H4V18.3851L5.76282 17ZM6.45455 19L2 22.5V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.45455Z"></path></svg>
+                <small class="mt-1">Messaging</small>
+              </a>
+            </li> -->
+        <!-- <li class="nav-item text-center">
+              <a class="nav-link d-flex flex-column align-items-center" href="#" [class.active]="activeItem === 'notifications'" (click)="setActive('notifications')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                </svg>
+                <small class="mt-1">Notifications</small>
+              </a>
+            </li> -->
+        <!-- <li class="nav-item text-center">
+          
+        </li> -->
+        <li class="nav-item text-center">
+          <div ngbDropdown class="d-inline-block" placement="left-start">
+            <a class="nav-link d-flex flex-column align-items-center" id="dropdownBasic1"
+            [class.active]="activeItem === 'me'" (click)="setActive('me')" placement="left" ngbDropdownToggle >
+            <img [src]="user?.Avatar" class="rounded-circle" alt="Profile" width="24" height="24">
+            <small class="mt-1">Me</small>
+          </a>
+            <div ngbDropdownMenu>
+              <button ngbDropdownItem  routerLink="profile">Profile</button>
+              <button ngbDropdownItem (click)="logout()">Logout</button>
+              <!-- <button ngbDropdownItem>Something else is here</button> -->
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

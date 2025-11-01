@@ -1,0 +1,47 @@
+<div class="flex flex-col h-screen bg-gray-50">
+  <!-- Header -->
+  <div class="flex items-center justify-between bg-gray-200 p-3 border-b">
+    <div class="flex items-center gap-3">
+      <img [src]="selectedUser?.profilePic" class="w-10 h-10 rounded-full">
+      <h3 class="font-semibold">{{ selectedUser?.name }}</h3>
+    </div>
+    <div class="flex gap-3 text-gray-600">
+      <button>🔍</button>
+      <button>⋮</button>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="flex-1 overflow-y-auto p-4 space-y-2 bg-chat-bg bg-cover">
+    <!-- <div
+      *ngFor="let msg of messages"
+      class="flex"
+      [ngClass]="{'justify-end': msg.senderId === currentUserId}"
+    >
+      <div
+        class="max-w-xs px-3 py-2 rounded-lg text-sm"
+        [ngClass]="{
+          'bg-green-100': msg.senderId === currentUserId,
+          'bg-white': msg.senderId !== currentUserId
+        }"
+      >
+        {{ msg.text }}
+      </div>
+    </div> -->
+  </div>
+
+  <!-- Input -->
+  <div class="p-3 bg-gray-200 flex items-center gap-2">
+    <input
+      [(ngModel)]="newMessage"
+      placeholder="Type a message"
+      class="flex-1 px-3 py-2 rounded-full border focus:outline-none"
+    />
+    <button
+      (click)="sendMessage()"
+      class="bg-green-500 text-white px-4 py-2 rounded-full"
+    >
+      ➤
+    </button>
+  </div>
+</div>

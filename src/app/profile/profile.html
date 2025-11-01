@@ -1,0 +1,27 @@
+<div class="card profile-card shadow-sm p-4">
+    <div class="row align-items-center">
+        <div class="col-md-3 text-center mb-3 mb-md-0">
+            <img [src]="user.Avatar" alt="Profile" class="profile-img">
+        </div>
+        <div class="col-md-9">
+            <div class="profile-name">{{user.name}} <span> <button class="icon-btn">
+                <i class="ri-pencil-line"></i>
+            </button></span></div>
+            <!-- <p class="text-muted mb-2">Profile last updated: Today</p> -->
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="icon-text"><i class="ri-map-pin-line"></i> {{user.location ??"Not Mentioned"}}</p>
+                    <p class="icon-text"><i class="bi bi-clock"></i>{{user.createdAt| date}}</p>
+                    <!-- <p class="icon-text"><i class="bi bi-calendar"></i> 1 Year</p>
+          <p class="icon-text"><i class="bi bi-currency-rupee"></i> 1,80,000</p> -->
+                </div>
+                <div class="col-md-6">
+                    <p class="icon-text"><i class="ri-phone-fill"></i> {{user.mobile ?? "Not mentioned"}}</p>
+                    <p class="icon-text"><i class="bi bi-envelope"></i> {{user.email}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
