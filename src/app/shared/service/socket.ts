@@ -24,7 +24,6 @@ export class Socket {
    listen(event: string): Observable<any> {
     return new Observable((subscriber) => {
       this.socket.on(event, (data) => {
-        console.log(`📩 Received event: ${event}`, data);
         subscriber.next(data);
       });
     });

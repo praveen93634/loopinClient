@@ -14,25 +14,25 @@
 
     <!-- Chat Body -->
     <div class="chat-body flex-grow-1 overflow-auto p-3" id="chatBody">
-      @for (item of messages; track $index) {
-        <div>
-          <!-- Incoming message -->
-          <div *ngIf="!item.isMine" class="d-flex">
-            <img src="default.webp" alt="User" class="rounded-circle me-2" width="35" height="35">
-            <div class="bg-white p-2 px-3 rounded-3 shadow-sm">
-              <p class="mb-1">{{item.text}}</p>
-              <small class="text-muted">10:00 AM</small>
-            </div>
-          </div>
-
-          <!-- Outgoing message -->
-          <div *ngIf="item.isMine" class="bg-primary text-white p-2 px-3 rounded-3 shadow-sm">
-            <p class="mb-1">{{item.text}}</p>
-            <small class="text-white-50">10:02 AM</small>
-          </div>
-        </div>
-      }
+  <div *ngFor="let item of messages; let i = index">
+    <!-- Incoming -->
+    <div *ngIf="item.Userid === toUserid" class="d-flex">
+      <img src="default.webp" alt="User" class="rounded-circle me-2" width="35" height="35">
+      <div class="bg-white p-2 px-3 my-1 rounded-3 shadow-sm">
+        <p class="mb-1">{{item.text}}</p>
+        <!-- <small class="text-muted">{{toUserid}}</small> -->
+      </div>
     </div>
+
+    <!-- Outgoing -->
+    <div *ngIf="item.Userid === loggedinUserid" class="d-flex justify-content-end">
+      <div class="bg-primary text-white p-2 px-3 my-1 rounded-3 shadow-sm">
+        <p class="mb-1">{{item.text}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <!-- Chat Input -->
     <div class="p-3 bg-white border-top d-flex align-items-center rounded-bottom">

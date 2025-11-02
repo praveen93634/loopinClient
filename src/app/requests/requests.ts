@@ -21,7 +21,7 @@ export class Requests {
     getPendingRequests() {
       this.userservice.getPendingRequests().subscribe((res: any) => {
         console.log(res);
-        this.usersList = res.result.requests;
+        this.usersList = res.result;
       }, (err => {
         console.log(err);
       }
