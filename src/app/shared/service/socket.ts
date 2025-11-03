@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { io } from 'socket.io-client';
 import type { Socket as SocketIO } from 'socket.io-client';
 import { Observable, Subscriber } from 'rxjs';
