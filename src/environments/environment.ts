@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiUrl: "http://51.21.249.41/api",
+    apiUrl: "http://51.21.249.41/api/socket.io",
     firebaseConfig: {
         apiKey: "AIzaSyAFt7ig7yETMJlixYGxz_yaA5euuZFoy70",
         authDomain: "loopin-a446c.firebaseapp.com",
