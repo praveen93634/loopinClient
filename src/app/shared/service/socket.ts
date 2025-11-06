@@ -9,12 +9,13 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class Socket {
    private socket!: SocketIO;
-   private SERVER_URL = environment.apiUrl+"/api/socket.io";
+   private SERVER_URL = environment.apiUrl;
    constructor(){
     this.connect()
    }
    connect():void{
     this.socket = io(this.SERVER_URL,{
+      path: "/api/socket.io/",
       transports:['websocket'],
     })
    }
