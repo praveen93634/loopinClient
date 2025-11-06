@@ -9,7 +9,7 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class Socket {
    private socket!: SocketIO;
-   private SERVER_URL = environment.apiUrl+"api/socket.io";
+   private SERVER_URL = environment.apiUrl+"/api/socket.io";
    constructor(){
     this.connect()
    }
