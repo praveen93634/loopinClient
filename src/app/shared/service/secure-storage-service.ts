@@ -5,7 +5,7 @@ import * as CryptoJS from 'crypto-js';
   providedIn: 'root'
 })
 export class SecureStorageService {
-  private secretKey = 'praveen@123'; // ⚠️ Replace with your own secret key
+  private secretKey = 'praveen@123'; 
 
   // Encrypt and store data
   setItem(key: string, value: any): void {

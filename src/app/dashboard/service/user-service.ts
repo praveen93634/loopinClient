@@ -6,21 +6,21 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-    private url=environment.apiUrl+'/user';
-  constructor(private http:HttpClient) { }
-  getAllUsers(data:any){
-    return this.http.put((this.url+'/getAllUsers'),data);
+  private url = environment.apiUrl + '/user';
+  constructor(private http: HttpClient) { }
+  getAllUsers(data: any) {
+    return this.http.put((this.url + '/getAllUsers'), data);
   }
-  getPendingRequests(){
-    return this.http.get((this.url+'/requests/received'));
+  getPendingRequests() {
+    return this.http.get((this.url + '/requests/received'));
   }
-  getUserById(){
+  getUserById() {
     return this.http.get((`${this.url}/profile`));
   }
-  updateUser(data:any){
-    return this.http.put((this.url+'/update'),data);
+  updateUser(data: any) {
+    return this.http.put((this.url + '/update'), data);
   }
-  getmyconnections(){
-    return this.http.get((this.url+'/myconnections'));
+  getmyconnections() {
+    return this.http.get((this.url + '/myconnections'));
   }
 }

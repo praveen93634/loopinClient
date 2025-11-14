@@ -3,12 +3,12 @@ import { CanActivateFn, Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-   const isLoggedIn = !!localStorage.getItem('token'); // or check with AuthService
+   const isLoggedIn = !!localStorage.getItem('token'); 
 
     if (isLoggedIn) {
-      return true; // allow access
+      return true; 
     } else {
-      router.navigate(['/login']); // redirect to login if not logged in
+      router.navigate(['/login']); 
       return false;
     }
 };
